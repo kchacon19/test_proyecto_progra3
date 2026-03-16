@@ -1,19 +1,44 @@
-/* Font Imports */
+/*
+ * style.css — Estilos Globales Personalizados
+ * Hotel Brisa del Pacífico
+ *
+ * Estructura:
+ *  1. Variables CSS (Design Tokens)
+ *  2. Estilos base (body, tipografía)
+ *  3. Barra de navegación
+ *  4. Sección Hero (página de inicio)
+ *  5. Botones personalizados
+ *  6. Secciones genéricas (espaciado, títulos)
+ *  7. Tarjetas de servicios
+ *  8. Tarjetas de habitaciones
+ *  9. Footer
+ * 10. Formulario de contacto
+ *
+ * Dependencias externas:
+ *  - Bootstrap 5.3 (complementa, no reemplaza)
+ *  - Google Fonts: Playfair Display, Open Sans
+ */
+
+/* ============================================================
+   1. VARIABLES CSS (Design Tokens)
+   ============================================================
+   Centralizan los colores y fuentes del sistema de diseño.
+   Modificar aquí para cambiar la identidad visual completa. */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap');
 
 :root {
-    --primary-color: #1B6CA8;
-    /* Azul océano */
-    --secondary-color: #5BC0EB;
-    /* Turquesa claro */
-    --accent-color: #F4ECDC;
-    /* Arena suave */
-    --text-color: #333;
-    --light-text: #fff;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Open Sans', sans-serif;
+    --primary-color: #1B6CA8;   /* Azul océano — navbar, headers, footer */
+    --secondary-color: #5BC0EB; /* Turquesa claro — acentos, botones, precios */
+    --accent-color: #F4ECDC;    /* Arena suave — fondos alternativos */
+    --text-color: #333;         /* Texto principal */
+    --light-text: #fff;         /* Texto sobre fondos oscuros */
+    --font-heading: 'Playfair Display', serif; /* Títulos elegantes */
+    --font-body: 'Open Sans', sans-serif;      /* Cuerpo de texto legible */
 }
 
+/* ============================================================
+   2. ESTILOS BASE
+   ============================================================ */
 body {
     font-family: var(--font-body);
     color: var(--text-color);
@@ -21,17 +46,18 @@ body {
     background-color: #fdfdfd;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Todos los headings usan la fuente serif elegante */
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--primary-color);
 }
 
-/* Navbar */
+/* ============================================================
+   3. BARRA DE NAVEGACIÓN
+   ============================================================
+   Fija en la parte superior de todas las páginas.
+   Se puede extender con la clase 'scrolled' vía main.js
+   para cambiar apariencia al hacer scroll. */
 .navbar {
     background-color: var(--primary-color) !important;
     padding: 1rem 0;
@@ -55,14 +81,20 @@ h6 {
     transition: color 0.3s ease;
 }
 
+/* Estado activo y hover: turquesa */
 .nav-link:hover,
 .nav-link.active {
     color: var(--secondary-color) !important;
 }
 
-/* Hero Section */
+/* ============================================================
+   4. SECCIÓN HERO (home.html)
+   ============================================================
+   Ocupa el 85% del viewport. Imagen de fondo con overlay oscuro
+   para garantizar legibilidad del texto blanco superpuesto. */
 .inicio {
-    background: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(10, 37, 64, 0.5), rgba(10, 37, 64, 0.5)),
+                url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -76,7 +108,7 @@ h6 {
     font-size: 4rem;
     color: var(--secondary-color);
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad sobre imagen */
 }
 
 .inicio p {
@@ -85,12 +117,20 @@ h6 {
     font-weight: 300;
 }
 
-/* Buttons */
+/* ============================================================
+   5. BOTONES PERSONALIZADOS
+   ============================================================
+   Se usan dos variantes en todo el sitio:
+   - .btn-dorado: relleno turquesa, para acciones principales
+   - .btn-borde-dorado: solo borde turquesa, para acciones secundarias
+   Ambos tienen efecto hover invertido entre sí. */
+
+/* Botón principal — fondo turquesa */
 .btn-dorado {
     background-color: var(--secondary-color);
     color: white;
     padding: 12px 30px;
-    border-radius: 0;
+    border-radius: 0; /* Estilo rectangular, sin bordes redondeados */
     text-transform: uppercase;
     letter-spacing: 1px;
     border: 2px solid var(--secondary-color);
@@ -104,6 +144,7 @@ h6 {
     color: var(--secondary-color);
 }
 
+/* Botón secundario — solo borde */
 .btn-borde-dorado {
     background-color: transparent;
     color: var(--secondary-color);
@@ -120,11 +161,16 @@ h6 {
     color: white;
 }
 
-/* Section Styling */
+/* ============================================================
+   6. SECCIONES GENÉRICAS
+   ============================================================ */
+
+/* Espaciado vertical estándar para todas las secciones */
 .espaciado-seccion {
     padding: 80px 0;
 }
 
+/* Título de sección centrado con línea decorativa inferior */
 .titulo-seccion {
     text-align: center;
     margin-bottom: 60px;
@@ -137,6 +183,7 @@ h6 {
     padding-bottom: 15px;
 }
 
+/* Línea turquesa decorativa debajo del título */
 .titulo-seccion h2::after {
     content: '';
     position: absolute;
@@ -148,7 +195,10 @@ h6 {
     background-color: var(--secondary-color);
 }
 
-/* Services */
+/* ============================================================
+   7. TARJETAS DE SERVICIOS (services.html)
+   ============================================================
+   Elevación al hover + borde inferior turquesa como indicador visual. */
 .tarjeta-servicio {
     text-align: center;
     padding: 30px 20px;
@@ -156,26 +206,31 @@ h6 {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
     height: 100%;
-    border-bottom: 3px solid transparent;
+    border-bottom: 3px solid transparent; /* Invisible por defecto */
 }
 
 .tarjeta-servicio:hover {
-    transform: translateY(-10px);
-    border-bottom: 3px solid var(--secondary-color);
+    transform: translateY(-10px);           /* Efecto de elevación */
+    border-bottom: 3px solid var(--secondary-color); /* Aparece en hover */
 }
 
+/* Ícono grande sobre el título de cada servicio */
 .icono-servicio {
     font-size: 3rem;
     color: var(--secondary-color);
     margin-bottom: 20px;
 }
 
-/* Rooms */
+/* ============================================================
+   8. TARJETAS DE HABITACIONES (rooms.html, home.html)
+   ============================================================
+   Las imágenes tienen altura fija y efecto zoom al hacer hover.
+   La tarjeta completa se eleva ligeramente. */
 .tarjeta-habitacion {
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow: hidden; /* Evita que el zoom de imagen desborde la tarjeta */
 }
 
 .tarjeta-habitacion:hover {
@@ -183,6 +238,7 @@ h6 {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
+/* Contenedor de imagen con altura fija para uniformidad visual */
 .contenedor-img-habitacion {
     overflow: hidden;
     position: relative;
@@ -192,10 +248,11 @@ h6 {
 .contenedor-img-habitacion img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;           /* Recorta sin deformar la imagen */
     transition: transform 0.5s ease;
 }
 
+/* Zoom de imagen al hacer hover en la tarjeta */
 .tarjeta-habitacion:hover .contenedor-img-habitacion img {
     transform: scale(1.1);
 }
@@ -205,6 +262,7 @@ h6 {
     background: white;
 }
 
+/* Precio destacado con fuente serif */
 .precio {
     font-family: var(--font-heading);
     font-size: 1.5rem;
@@ -212,7 +270,11 @@ h6 {
     font-weight: 700;
 }
 
-/* Footer */
+/* ============================================================
+   9. FOOTER
+   ============================================================
+   Fondo azul océano con texto semi-transparente.
+   La barra inferior tiene un oscurecimiento adicional con RGBA. */
 footer {
     background-color: var(--primary-color);
     color: rgba(255, 255, 255, 0.7);
@@ -244,14 +306,19 @@ footer a:hover {
     color: var(--secondary-color);
 }
 
-/* Contact Form */
+/* ============================================================
+   10. FORMULARIO DE CONTACTO (contact.html)
+   ============================================================
+   Inputs rectangulares (sin border-radius) para consistencia
+   con el estilo angular del resto del diseño. */
 .form-control {
-    border-radius: 0;
+    border-radius: 0;  /* Sin bordes redondeados — coherente con los botones */
     padding: 12px;
     border: 1px solid #ddd;
 }
 
+/* Al enfocar un campo, resalta con el color turquesa del tema */
 .form-control:focus {
     border-color: var(--secondary-color);
-    box-shadow: none;
+    box-shadow: none; /* Elimina el glow azul por defecto de Bootstrap */
 }
