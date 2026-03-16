@@ -1,6 +1,25 @@
-$(document).ready(function() {
-    // Navbar scroll effect
-    $(window).scroll(function() {
+/**
+ * main.js — Lógica JavaScript Global
+ * Hotel Brisa del Pacífico
+ *
+ * Este archivo se carga en todas las páginas públicas del sitio.
+ * Contiene:
+ *  - Efecto de scroll en la barra de navegación
+ *  - Validación y envío simulado de formularios de contacto/reservación
+ *  - Inicialización de Tooltips de Bootstrap
+ *
+ * Dependencias: jQuery 3.7+, Bootstrap 5.3+
+ */
+
+$(document).ready(function () {
+
+    // =========================================================
+    // NAVBAR — Efecto al hacer scroll
+    // =========================================================
+    // Añade la clase CSS 'scrolled' a la navbar cuando el usuario
+    // desplaza la página más de 50px hacia abajo. Esto permite aplicar
+    // estilos diferentes (ej: fondo más opaco) vía CSS.
+    $(window).scroll(function () {
         if ($(window).scrollTop() > 50) {
             $('.navbar').addClass('scrolled');
         } else {
@@ -8,45 +27,68 @@ $(document).ready(function() {
         }
     });
 
-    // Contact/Reservation Form Validation
-    $('#formularioReservacion, #formularioContacto').on('submit', function(e) {
-        e.preventDefault();
-        
+    // =========================================================
+    // FORMULARIOS — Validación y envío simulado
+    // =========================================================
+    // Aplica la misma lógica al formulario de reservación (#formularioReservacion)
+    // y al formulario de contacto (#formularioContacto) en contact.html.
+    //
+    // Flujo:
+    //  1. Previene el envío nativo del formulario (preventDefault).
+    //  2. Recorre todos los campos requeridos (input, textarea, select).
+    //  3. Si un campo está vacío, marca el campo como inválido (clase Bootstrap 'is-invalid').
+    //  4. Si todos son válidos, simula una llamada AJAX con setTimeout de 1.5 segundos.
+    //  5. Muestra un mensaje de éxito y resetea el formulario.
+    $('#formularioReservacion, #formularioContacto').on('submit', function (e) {
+        e.preventDefault(); // Evita recarga de página
+
         let isValid = true;
         const form = $(this);
-        
-        // Simple fake validation
-        form.find('input[required], textarea[required], select[required]').each(function() {
+
+        // Validación: verifica que ningún campo requerido esté vacío
+        form.find('input[required], textarea[required], select[required]').each(function () {
             if ($(this).val() === '') {
                 isValid = false;
-                $(this).addClass('is-invalid');
+                $(this).addClass('is-invalid');    // Muestra mensaje de error Bootstrap
             } else {
                 $(this).removeClass('is-invalid');
-                $(this).addClass('is-valid');
+                $(this).addClass('is-valid');      // Muestra check verde Bootstrap
             }
         });
 
         if (isValid) {
-            // Simulate AJAX request
+            // Simulación de envío AJAX:
+            // En producción, reemplazar este bloque con una llamada real
+            // usando fetch() o $.ajax() apuntando al endpoint del backend.
             const btn = form.find('button[type="submit"]');
             const originalText = btn.text();
-            
+
+            // Deshabilita el botón para evitar envíos duplicados
             btn.text('Enviando...').prop('disabled', true);
-            
-            setTimeout(function() {
+
+            // Simula latencia de red (1500ms)
+            setTimeout(function () {
                 alert('¡Solicitud enviada con éxito! Nos pondremos en contacto pronto.');
-                form[0].reset();
-                form.find('.is-valid').removeClass('is-valid');
-                btn.text(originalText).prop('disabled', false);
+                form[0].reset();                                  // Limpia el formulario
+                form.find('.is-valid').removeClass('is-valid');   // Quita estados visuales
+                btn.text(originalText).prop('disabled', false);  // Rehabilita el botón
             }, 1500);
+
         } else {
+            // Si hay campos vacíos, muestra alerta y detiene el proceso
             alert('Por favor complete todos los campos requeridos.');
         }
     });
 
-    // Initialize Tooltips/Popovers
+    // =========================================================
+    // BOOTSTRAP — Inicialización de Tooltips
+    // =========================================================
+    // Activa todos los tooltips de Bootstrap en la página actual.
+    // Para usar un tooltip en un elemento HTML, agregar:
+    //   data-bs-toggle="tooltip" title="Texto del tooltip"
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
 });
