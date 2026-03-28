@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brisa del Pacifico - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../public/assets/css/style.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            background-color: #1B6CA8;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .sidebar a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #5BC0EB;
+            border-left: 4px solid #5BC0EB;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar d-none d-md-block" style="width: 250px;">
+            <div class="p-3">
+                <h4 class="text-white">Admin Panel</h4>
+            </div>
+            <a href="home.html" class="mb-2"><i class="fas fa-home me-2"></i> Ir al Sitio Web</a>
+            <a href="#" class="active"><i class="fas fa-chart-line me-2"></i> Estadísticas</a>
+            <a href="#"><i class="fas fa-calendar-check me-2"></i> Reservas</a>
+            <a href="#"><i class="fas fa-users me-2"></i> Huéspedes</a>
+            <a href="#"><i class="fas fa-cog me-2"></i> Configuración</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white shadow-sm mb-4">
+                <div class="container-fluid">
+                    <button class="btn btn-primary d-md-none me-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mobileSidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <span class="navbar-brand mb-0 h1 fs-6">Resumen de Actividad</span>
+                    <div class="ms-auto d-flex align-items-center">
+                        <span class="me-3 text-muted">Admin User</span>
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff"
+                            class="rounded-circle" width="32" height="32" alt="User">
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid p-4">
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="text-muted text-uppercase mb-2">Reservas Hoy</h6>
+                                <h3 class="mb-0">12</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="text-muted text-uppercase mb-2">Habitaciones Ocupadas</h6>
+                                <h3 class="mb-0">45/60</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="text-muted text-uppercase mb-2">Ingresos del Mes</h6>
+                                <h3 class="mb-0 text-success">$24,500</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="text-muted text-uppercase mb-2">Valoración Promedio</h6>
+                                <h3 class="mb-0 text-warning">4.8 <small class="fs-6 text-muted">/ 5</small></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Chart 1 -->
+                    <div class="col-md-8 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0 mt-2">
+                                <h5 class="mb-0">Ocupación Mensual (2024)</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="occupancyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0 mt-2">
+                                <h5 class="mb-0">Tipos de Habitación</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="roomTypeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-white border-0 mt-2">
+                                <h5 class="mb-0">Últimas Reservas</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Huésped</th>
+                                                <th>Habitación</th>
+                                                <th>Fecha Entrada</th>
+                                                <th>Fecha Salida</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1001</td>
+                                                <td>Juan Pérez</td>
+                                                <td>Deluxe 204</td>
+                                                <td>2024-05-10</td>
+                                                <td>2024-05-15</td>
+                                                <td><span class="badge bg-success">Confirmado</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1002</td>
+                                                <td>Maria Garcia</td>
+                                                <td>Suite 501</td>
+                                                <td>2024-05-12</td>
+                                                <td>2024-05-14</td>
+                                                <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1003</td>
+                                                <td>Carlos Lopez</td>
+                                                <td>Standard 102</td>
+                                                <td>2024-05-15</td>
+                                                <td>2024-05-20</td>
+                                                <td><span class="badge bg-success">Confirmado</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart Initialization
+        document.addEventListener('DOMContentLoaded', function () {
+            // Occupancy Chart
+            const ctx1 = document.getElementById('occupancyChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    datasets: [{
+                        label: 'Ocupación (%)',
+                        data: [65, 59, 80, 81, 56, 75, 85, 90, 70, 60, 55, 80],
+                        borderColor: '#1B6CA8',
+                        backgroundColor: 'rgba(27, 108, 168, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Room Type Chart
+            const ctx2 = document.getElementById('roomTypeChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Standard', 'Deluxe', 'Suite', 'Familiar'],
+                    datasets: [{
+                        data: [35, 30, 20, 15],
+                        backgroundColor: [
+                            '#1B6CA8',
+                            '#5BC0EB',
+                            '#6c757d',
+                            '#e9ecef'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

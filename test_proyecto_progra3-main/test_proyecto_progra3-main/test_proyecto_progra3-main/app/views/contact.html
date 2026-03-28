@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brisa del Pacifico - Contacto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../public/assets/css/style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 60px;
+            color: white;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><i class="fas fa-hotel me-2"></i> BRISA DEL PACIFICO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="home.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">Habitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="location.html">Ubicación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-dorado ms-lg-3"
+                            href="login.html">Afiliarse</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="display-4">Contacto y Reservas</h1>
+            <p class="lead">Estamos aquí para atender sus solicitudes</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="espaciado-seccion pt-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 mb-5">
+                    <div class="titulo-seccion text-start mb-4">
+                        <h2>Envíenos un Mensaje</h2>
+                    </div>
+                    <form id="formularioContacto">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="name" required>
+                                <div class="invalid-feedback">Por favor ingrese su nombre.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">Por favor ingrese un correo válido.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Asunto</label>
+                            <select class="form-select form-control" id="subject" required>
+                                <option value="" selected disabled>Seleccione una opción...</option>
+                                <option value="Reserva">Reserva</option>
+                                <option value="Consulta">Consulta General</option>
+                                <option value="Eventos">Eventos</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                            <div class="invalid-feedback">Seleccione un asunto.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                            <div class="invalid-feedback">El mensaje no puede estar vacío.</div>
+                        </div>
+                        <button type="submit" class="btn btn-dorado">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="titulo-seccion text-start mb-4">
+                        <h2>Información de Contacto</h2>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="fs-2 text-warning me-3"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5>Dirección</h5>
+                            <p class="text-muted">Guanacaste, Playa Danta</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="fs-2 text-warning me-3"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h5>Teléfono</h5>
+                            <p class="text-muted">+1 234 567 890</p>
+                            <p class="text-muted">+1 987 654 321</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="fs-2 text-warning me-3"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p class="text-muted">reservas@brisadelpacifico.com</p>
+                            <p class="text-muted">info@brisadelpacifico.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="fs-2 text-warning me-3"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h5>Horario de Atención</h5>
+                            <p class="text-muted">Lunes - Domingo: 24 Horas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Brisa del Pacifico</h5>
+                    <p>Experiencia de lujo y confort en el corazón de la ciudad. Su descanso es nuestra prioridad.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Enlaces</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="rooms.html" class="text-white">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-white">Servicios</a></li>
+                        <li><a href="contact.html" class="text-white">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Guanacaste, Playa Danta</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@brisadelpacifico.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2026 Brisa del Pacifico. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../public/assets/js/main.js"></script>
+</body>
+
+</html>
