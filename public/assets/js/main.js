@@ -90,58 +90,5 @@ $(document).ready(function () {
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
-    // =========================================================
-    // CHATBOT — Consultas Basicas:
-    // precio, ubicacion, reserva, hola
-    // =========================================================
-
-    $('#chatbot-toggle').click(function () {
-        $('#chatbot-box').toggle();
-    });
-
-    $('#chatbot-close').click(function () {
-        $('#chatbot-box').hide();
-    });
-
-    $('#chatbot-send').click(function () {
-        sendMessage();
-    });
-
-    $('#chatbot-text').keypress(function (e) {
-        if (e.which === 13) {
-            sendMessage();
-        }
-    });
-
-    function sendMessage() {
-        const input = $('#chatbot-text');
-        const message = input.val().trim();
-
-        if (message === '') return;
-
-        $('#chatbot-messages').append(`<div class="user-message">${message}</div>`);
-        input.val('');
-
-        // Respuesta simulada
-        setTimeout(function () {
-            let response = "Lo siento, no entendí tu mensaje.";
-
-            if (message.toLowerCase().includes('precio')) {
-                response = "Nuestras habitaciones van desde $220 por noche.";
-            } else if (message.toLowerCase().includes('ubicacion')) {
-                response = "Estamos ubicados en Guanacaste, Playa Danta.";
-            } else if (message.toLowerCase().includes('reserva')) {
-                response = "Puedes reservar desde la sección de contacto.";
-            } else if (message.toLowerCase().includes('hola')) {
-                response = "¡Hola! ¿En qué puedo ayudarte?";
-            }
-
-            $('#chatbot-messages').append(`<div class="bot-message">${response}</div>`);
-
-            // Scroll automático
-            $('#chatbot-messages').scrollTop($('#chatbot-messages')[0].scrollHeight);
-
-        }, 500);
-    }
 
 });
