@@ -27,13 +27,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap');
 
 :root {
-    --primary-color: #1B6CA8;   /* Azul océano — navbar, headers, footer */
-    --secondary-color: #5BC0EB; /* Turquesa claro — acentos, botones, precios */
-    --accent-color: #F4ECDC;    /* Arena suave — fondos alternativos */
-    --text-color: #333;         /* Texto principal */
-    --light-text: #fff;         /* Texto sobre fondos oscuros */
-    --font-heading: 'Playfair Display', serif; /* Títulos elegantes */
-    --font-body: 'Open Sans', sans-serif;      /* Cuerpo de texto legible */
+    --primary-color: #1B6CA8;
+    /* Azul océano */
+    --secondary-color: #5BC0EB;
+    --nav-title-color:#F4D35E
+    /* Turquesa claro */
+    --accent-color: #F4ECDC;
+    /* Arena suave */
+    --text-color: #333;
+    --light-text: #fff;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Open Sans', sans-serif;
 }
 
 /* ============================================================
@@ -59,14 +63,16 @@ h1, h2, h3, h4, h5, h6 {
    Se puede extender con la clase 'scrolled' vía main.js
    para cambiar apariencia al hacer scroll. */
 .navbar {
-    background-color: var(--primary-color) !important;
+    background: rgba(27, 108, 168, 0.95) !important;
+    backdrop-filter: blur(6px);
     padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand {
     font-family: var(--font-heading);
-    color: var(--secondary-color) !important;
+    color: var(nav-title-colo) !important;
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -106,9 +112,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .inicio h1 {
     font-size: 4rem;
-    color: var(--secondary-color);
+    color: #FFFFFF;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Mejora legibilidad sobre imagen */
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
 .inicio p {
@@ -147,18 +153,21 @@ h1, h2, h3, h4, h5, h6 {
 /* Botón secundario — solo borde */
 .btn-borde-dorado {
     background-color: transparent;
-    color: var(--secondary-color);
+    color: #BFEFFF;
     padding: 10px 25px;
-    border-radius: 0;
+    border-radius: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid rgba(91, 192, 235, 0.7);
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(91, 192, 235, 0.2);
 }
 
 .btn-borde-dorado:hover {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: rgba(91, 192, 235, 0.15);
+    color: #ffffff;
+    border-color: #BFEFFF;
+    box-shadow: 0 0 18px rgba(91, 192, 235, 0.4);
 }
 
 /* ============================================================
@@ -320,5 +329,6 @@ footer a:hover {
 /* Al enfocar un campo, resalta con el color turquesa del tema */
 .form-control:focus {
     border-color: var(--secondary-color);
-    box-shadow: none; /* Elimina el glow azul por defecto de Bootstrap */
+    box-shadow: none;
 }
+
